@@ -3,14 +3,14 @@ import random
 board = [" ", " ", " ",
          " ", " ", " ",
          " ", " ", " "]
-currentPlayer = "X"
+currentPlayer = random.choice("X0")
 winner = None
 gameRunning = True
 print("Welcome to Tic Tac Toy")
 
 # computer
 def computer(board):
-    while currentPlayer == "0":
+    if currentPlayer == "0":
         position = random.randint(0,8)
         if board[position] == " ":
             board[position] = "0"
@@ -24,6 +24,7 @@ def printBoard(board):
     print(board[3] + " |", board[4] + " |", board[5])
     print("--+---+---")
     print(board[6] + " |", board[7] + " |", board[8])
+    print("==========")
 
 
 # printBoard(board)
@@ -31,11 +32,14 @@ def printBoard(board):
 
 # take pleyer input
 def takePlayerInput(board):
-    inp = int(input("Enter a number 1-9: "))
-    if 1 <= inp <= 9 and board[inp - 1] == " ":
-        board[inp - 1] = currentPlayer
-    else:
-        print("You cant go there!")
+    while currentPlayer != "0":
+        inp = int(input("Enter a number 1-9: "))
+        if 1 <= inp <= 9 and board[inp - 1] == " ":
+            board[inp - 1] = currentPlayer
+            switchPlayer()
+
+        else:
+            print("You cant go there!")
 
 
 # check for win or tie
@@ -110,7 +114,6 @@ while gameRunning:
     takePlayerInput(board)
     checkWin()
     checkTie(board)
-    switchPlayer()
     computer(board)
     checkWin()
     checkTie(board)
