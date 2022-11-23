@@ -17,9 +17,21 @@ def printBoard(board):
     print(board[6] + " |", board[7] + " |", board[8])
 
 
-printBoard(board)
+#printBoard(board)
 
 
 # take pleyer input
 def takePlayerInput(board):
-    pass
+    inp = int(input("Enter a number 1-9: "))
+    if 1 <= inp <= 9 and board[inp - 1] == "_":
+        board[inp-1] = currentPlayer
+    else:
+        print("You cant go there!")
+
+# check for win or tie
+
+
+while gameRunning:
+    printBoard(board)
+    takePlayerInput(board)
+
