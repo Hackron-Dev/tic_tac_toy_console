@@ -1,8 +1,8 @@
 import random
 # Console tic tac toy
-board = ["_", "_", "_",
-         "_", "_", "_",
-         "_", "_", "_"]
+board = [" ", " ", " ",
+         " ", " ", " ",
+         " ", " ", " "]
 currentPlayer = "X"
 winner = None
 gameRunning = True
@@ -12,7 +12,7 @@ print("Welcome to Tic Tac Toy")
 def computer(board):
     while currentPlayer == "0":
         position = random.randint(0,8)
-        if board[position] == "_":
+        if board[position] == " ":
             board[position] = "0"
             switchPlayer()
 
@@ -20,9 +20,9 @@ def computer(board):
 # printing the game board
 def printBoard(board):
     print(board[0] + " |", board[1] + " |", board[2])
-    print("-----------")
+    print("--+---+---")
     print(board[3] + " |", board[4] + " |", board[5])
-    print("-----------")
+    print("--+---+---")
     print(board[6] + " |", board[7] + " |", board[8])
 
 
@@ -32,7 +32,7 @@ def printBoard(board):
 # take pleyer input
 def takePlayerInput(board):
     inp = int(input("Enter a number 1-9: "))
-    if 1 <= inp <= 9 and board[inp - 1] == "_":
+    if 1 <= inp <= 9 and board[inp - 1] == " ":
         board[inp - 1] = currentPlayer
     else:
         print("You cant go there!")
@@ -41,13 +41,13 @@ def takePlayerInput(board):
 # check for win or tie
 def checkHorizontal(board):
     global winner
-    if board[0] == board[1] == board[2] and board[0] != "_":
+    if board[0] == board[1] == board[2] and board[0] != " ":
         winner = board[0]
         return True
-    elif board[3] == board[4] == board[5] and board[3] != "_":
+    elif board[3] == board[4] == board[5] and board[3] != " ":
         winner = board[3]
         return True
-    elif board[6] == board[7] == board[8] and board[6] != "_":
+    elif board[6] == board[7] == board[8] and board[6] != " ":
         winner = board[6]
         return True
     else:
@@ -56,13 +56,13 @@ def checkHorizontal(board):
 
 def checkRow(board):
     global winner
-    if board[0] == board[3] == board[6] and board[0] != "_":
+    if board[0] == board[3] == board[6] and board[0] != " ":
         winner = board[0]
         return True
-    elif board[1] == board[4] == board[7] and board[1] != "_":
+    elif board[1] == board[4] == board[7] and board[1] != " ":
         winner = board[1]
         return True
-    elif board[2] == board[5] == board[8] and board[2] != "_":
+    elif board[2] == board[5] == board[8] and board[2] != " ":
         winner = board[2]
         return True
     else:
@@ -71,10 +71,10 @@ def checkRow(board):
 
 def checkDiag(board):
     global winner
-    if board[0] == board[4] == board[8] and board[0] != "_":
+    if board[0] == board[4] == board[8] and board[0] != " ":
         winner = board[0]
         return True
-    elif board[2] == board[4] == board[6] and board[2] != "_":
+    elif board[2] == board[4] == board[6] and board[2] != " ":
         winner = board[2]
         return True
     else:
@@ -82,7 +82,7 @@ def checkDiag(board):
 
 def checkTie(board):
     global gameRunning
-    if "_" not in board:
+    if " " not in board:
         printBoard(board)
         print("It's a tie!")
         gameRunning = False
