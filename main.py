@@ -1,3 +1,4 @@
+import random
 # Console tic tac toy
 board = ["_", "_", "_",
          "_", "_", "_",
@@ -6,6 +7,14 @@ currentPlayer = "X"
 winner = None
 gameRunning = True
 print("Welcome to Tic Tac Toy")
+
+# computer
+def computer(board):
+    while currentPlayer == "0":
+        position = random.randint(0,8)
+        if board[position] == "_":
+            board[position] = "0"
+            switchPlayer()
 
 
 # printing the game board
@@ -102,3 +111,6 @@ while gameRunning:
     checkWin()
     checkTie(board)
     switchPlayer()
+    computer(board)
+    checkWin()
+    checkTie(board)
