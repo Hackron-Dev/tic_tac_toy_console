@@ -89,7 +89,7 @@ def checkTie(board):
 
 # check for win
 def checkWin():
-    if checkDiag(board) or checkRow(board) or checkRow(board):
+    if checkDiag(board) or checkRow(board) or checkHorizontal(board):
         print(f"The winner is {winner}")
         printBoard(board)
         quit()
