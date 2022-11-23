@@ -82,6 +82,8 @@ def checkTie(board):
 def checkWin():
     if checkDiag(board) or checkRow(board) or checkRow(board):
         print(f"The winner is {winner}")
+        printBoard(board)
+        quit()
 
 
 
